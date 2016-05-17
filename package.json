@@ -1,0 +1,32 @@
+{
+  "name": "ubiquits",
+  "version": "0.0.0",
+  "description": "Isomorphic Javascript Framework build in TypeScript",
+  "main": "index.js",
+  "dependencies": {
+    "ubiquits": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubiquits/ubiquits.git"
+  },
+  "keywords": [
+    "angular",
+    "api",
+    "framework",
+    "isomorphic",
+    "rest",
+    "typescript",
+    "universal"
+  ],
+  "author": "Zak Henry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ubiquits/ubiquits/issues"
+  },
+  "homepage": "https://github.com/ubiquits/ubiquits#readme"
+}
