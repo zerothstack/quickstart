@@ -1,7 +1,4 @@
-# ubiquits
-_you-bick-wit-us_
-
-Isomorphic Javascript Framework build in TypeScript
+![ubiquits](https://rawgithub.com/ubiquits/assets/master/fulllogo.svg)
 
 ## Note
 Ubiquits is currently pre-alpha. Follow https://twitter.com/ubiquits for updates
