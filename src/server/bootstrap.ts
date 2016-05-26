@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { server, logger } from './main';
 
 server.start().then(() => {

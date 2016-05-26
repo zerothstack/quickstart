@@ -3,13 +3,13 @@ import { Cat } from '../../common/models/cat.model';
 import {
   Server,
   RouteBase,
-  AbstractController,
-  AbstractModel,
   Action,
   LoggerService,
+  AbstractController,
   Request,
   RouteParam
-} from '@ubiquits/core';
+} from '@ubiquits/core/server';
+import { AbstractModel } from '@ubiquits/core/common';
 
 @Injectable()
 @RouteBase('simple')
@@ -25,7 +25,7 @@ export class SimpleController extends AbstractController {
   }
 
   protected getOneById(request: Request, routeParams: RouteParam[]): AbstractModel {
-    return new Cat();
+    return new Cat('gary');
   }
 
 }

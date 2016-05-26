@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { ReflectiveInjector, ResolvedReflectiveProvider, provide } from '@angular/core';
 import * as Controllers from './controllers';
 import * as dotenv from 'dotenv';
-import { LoggerService, ConsoleLoggerService, coreInjector, Server } from '@ubiquits/core';
+import { LoggerService, ConsoleLoggerService, coreInjector, Server } from '@ubiquits/core/server';
 
 /**
  * Load .env variables into process.env.*
