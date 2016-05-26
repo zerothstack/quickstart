@@ -9,7 +9,8 @@ import { Cat } from '../../common/models/cat.model';
 export class AppComponent {
 
   public handleClick() {
-    console.log('click!', new Cat('spike'));
+    let cat = new Cat('spike');
+    console.log('click!', cat.greet(), cat);
   }
 
 }

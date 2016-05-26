@@ -9,7 +9,7 @@ export class Cat extends AbstractModel {
   }
 
   public greet(): string {
-    return `${this.name}: meow`;
+    return `${this.name}: rarr`;
   }
 
 }
