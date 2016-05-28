@@ -2,5 +2,5 @@ import 'reflect-metadata';
 import { server, logger } from './main';
 
 server.start().then(() => {
-  logger.info('Server running at:', server.getEngine().info.uri);
+  logger.source('server').info('Server running at:', server.getEngine().info.uri);
 });

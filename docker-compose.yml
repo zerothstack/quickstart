@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  database:
+    extends:
+      file: ./node_modules/@ubiquits/core/docker/common-services.yml
+      service: database
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./env/.local.env

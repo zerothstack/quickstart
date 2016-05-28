@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import '../public/css/styles.css';
-import { Cat } from '../../common/models/cat.model';
+import { User } from '../../common/models/user.model';
 @Component({
   selector: 'my-app',
   template: require('./app.component.html'),
@@ -9,8 +9,8 @@ import { Cat } from '../../common/models/cat.model';
 export class AppComponent {
 
   public handleClick() {
-    let cat = new Cat('spike');
-    console.log('click!', cat.greet(), cat);
+    let user = new User({userId:12334});
+    console.log('click!', user);
   }
 
 }

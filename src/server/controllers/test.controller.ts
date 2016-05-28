@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Cat } from '../../common/models/cat.model';
 import {
   Server,
   RouteBase,
   AbstractController,
-  LoggerService,
+  Logger,
   Request,
-  RouteParam
+  RouteParamMap,
+  Action
 } from '@ubiquits/core/server';
-import { AbstractModel } from '@ubiquits/core/common';
+import { AbstractModel, ModelStore } from '@ubiquits/core/common';
+import { User } from '../../common/models/user.model';
+import { UserStore } from '../stores/user.store';
 
 
 @Injectable()
@@ -16,15 +18,26 @@ import { AbstractModel } from '@ubiquits/core/common';
 export class TestController extends AbstractController {
 
 
-  constructor(server: Server, logger: LoggerService) {
+  constructor(server: Server, logger: Logger, protected userStore:UserStore) {
     super(server, logger);
 
-    logger.info('route base is %s', this.routeBase);
+    logger.info(`route base is ${this.routeBase}`);
 
   }
 
-  protected getOneById(request: Request, routeParams: RouteParam[]): AbstractModel {
-    return new Cat('louise');
+
+  @Action('GET', '/test-route')
+  public test() {
+    return 'hello world';
+  }
+
+  protected getOneById(request: Request, routeParams: RouteParamMap): User {
+
+    let user = this.userStore.findOne(routeParams.get('id'));
+    this.logger.debug(user, user.getIdentifier());
+
+    return user;
+
   }
 
 }
