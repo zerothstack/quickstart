@@ -39,7 +39,10 @@
     "typescript",
     "universal"
   ],
-  "author": "Zak Henry",
+  "author": {
+    "name": "Zak Henry",
+    "url": "https://twitter.com/zak"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ubiquits/ubiquits/issues"
