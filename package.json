@@ -24,7 +24,8 @@
     "test": "u test",
     "coveralls": "u coveralls",
     "build": "u build",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "postpublish": "u doc:deploy"
   },
   "repository": {
     "type": "git",
