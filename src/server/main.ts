@@ -33,7 +33,3 @@ resolvedControllerProviders.forEach((resolvedControllerProvider: ResolvedReflect
   logger.info(`initializing ${resolvedControllerProvider.key.displayName}`);
   injector.instantiateResolved(resolvedControllerProvider);
 });
-
-const db = injector.get(Database);
-
-logger.debug('database: ', db);
