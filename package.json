@@ -20,12 +20,12 @@
     "zone.js": "^0.6.12"
   },
   "scripts": {
-    "start": "u watch",
+    "start": "u",
     "test": "u test",
     "coveralls": "u coveralls",
     "build": "u build",
     "postinstall": "typings install",
-    "postpublish": "u doc:deploy"
+    "postpublish": "u deploy doc"
   },
   "repository": {
     "type": "git",
@@ -40,15 +40,8 @@
     "typescript",
     "universal"
   ],
-  "author": {
-    "name": "Zak Henry",
-    "url": "https://twitter.com/zak"
-  },
+  "author": "Zak Henry (https://twitter.com/zak)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ubiquits/ubiquits/issues"
-  },
-  "homepage": "https://github.com/ubiquits/ubiquits#readme",
   "devDependencies": {
     "@ubiquits/toolchain": "0.0.12"
   }
