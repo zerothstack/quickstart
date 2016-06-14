@@ -4,7 +4,7 @@ import * as controllers from './controllers';
 import * as dotenv from 'dotenv';
 import { Database, coreInjector, Server } from '@ubiquits/core/server';
 import { Logger, ConsoleLogger } from '@ubiquits/core/common';
-import { UserDBStore } from './stores/user.db.store';
+import { UserDatabaseStore } from './stores/user.db.store';
 import { UserStore } from '../common/stores/user.store';
 
 /**
@@ -20,7 +20,7 @@ let resolvedControllerProviders = ReflectiveInjector.resolve(Object.keys(control
 // resolve all other user classes
 let resolvedProviders = ReflectiveInjector.resolve([
   provide(Logger, {useClass: ConsoleLogger}),
-  provide(UserStore, {useClass: UserDBStore}),
+  provide(UserStore, {useClass: UserDatabaseStore}),
 ]).concat(resolvedControllerProviders);
 
 // get an injector from the resolutions, using the core injector as parent

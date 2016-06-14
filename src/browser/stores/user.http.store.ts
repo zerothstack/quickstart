@@ -1,38 +1,25 @@
 import { UserStore } from '../../common/stores/user.store';
 import { identifier, Logger } from '@ubiquits/core/common';
+import { HttpStore } from '@ubiquits/core/browser';
 import { User } from '../../common/models/user.model';
 
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class UserHttpStore extends UserStore {
+export class UserHttpStore extends HttpStore<User> implements UserStore {
 
-  private endpoint: string = 'api/users';
-
-  constructor(private http: Http, protected logger:Logger) {
-    super();
-  }
-
-  public findOne(id: identifier): Promise<User> {
-    
-    return this.http.get(`${this.endpoint}/${id}`)
-      .toPromise()
-      .then(this.extractData)
-      .catch((error) => this.handleError(error));
-
-  }
-
-  private extractData(res: Response): User {
-    let body = res.json();
-    return new User(body);
-  }
-
-  private handleError(error: any) {
-    let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    this.logger.error(errMsg);
-    return Promise.reject(errMsg);
+  constructor(http: Http, loggerBase: Logger){
+    /**
+     * @todo resolve why the <any>http is needed to suppress the following error:
+     *
+     * src/browser/stores/user.http.store.ts(13,17): error TS2345: Argument of type 'Http' is not assignable to parameter of type 'Http'.
+     * Property '_backend' is protected but type 'Http' is not a class derived from 'Http'.
+     *
+     * It may have something to do with both ubiquits/core and the current project
+     * depending on angular so TS thinks they could be different implementations?
+     */
+    super(User, <any>http, loggerBase);
   }
 
 }

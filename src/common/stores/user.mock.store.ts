@@ -9,7 +9,7 @@ export class UserMockStore extends UserStore {
   }
 
   public findOne(id: identifier): Promise<User> {
-    return Promise.resolve(new this.model({
+    return Promise.resolve(new this.modelStatic({
       userId: id,
       username: 'zak',
       birthday: new Date(1990, 10, 22)

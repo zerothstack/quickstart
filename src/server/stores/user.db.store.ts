@@ -1,19 +1,15 @@
 import { UserStore } from '../../common/stores/user.store';
 import { identifier } from '@ubiquits/core/common';
+import { DatabaseStore, Database } from '@ubiquits/core/server';
+import { Injectable } from '@angular/core';
 import { User } from '../../common/models/user.model';
+import { Logger } from '@ubiquits/core/common';
 
-export class UserDBStore extends UserStore{
+@Injectable()
+export class UserDatabaseStore extends DatabaseStore<User> implements UserStore {
 
-  constructor(){
-    super();
-  }
-
-  public findOne(id: identifier): Promise<User> {
-    return Promise.resolve(new this.model({
-      userId: id,
-      username: 'zak',
-      birthday: new Date(1990, 10, 22)
-    }));
+  constructor(database: Database, loggerBase: Logger){
+    super(User, database, loggerBase);
   }
 
 }

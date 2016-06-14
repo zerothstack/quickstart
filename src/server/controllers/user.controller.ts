@@ -8,7 +8,7 @@ import {
   RouteParamMap,
   Action
 } from '@ubiquits/core/server';
-import { ModelStore, Logger } from '@ubiquits/core/common';
+import { Logger } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
 import { UserStore } from '../../common/stores/user.store';
 

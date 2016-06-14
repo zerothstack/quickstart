@@ -13,7 +13,7 @@ export class AppComponent {
   }
 
   public handleClick() {
-    let userPromise = this.userStore.findOne(1234);
+    let userPromise = this.userStore.findOne('72eed629-c4ab-4520-a987-4ea26b134d8c');
     userPromise.then((user) => {
       console.log('click!', user);
     });
