@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import '../public/css/styles.css';
-import { User } from '../../common/models/user.model';
+import { UserStore } from '../../common/stores/user.store';
 @Component({
   selector: 'my-app',
   template: require('./app.component.html'),
@@ -8,9 +8,16 @@ import { User } from '../../common/models/user.model';
 })
 export class AppComponent {
 
+  constructor(protected userStore:UserStore){
+
+  }
+
   public handleClick() {
-    let user = new User({userId:12334});
-    console.log('click!', user);
+    let userPromise = this.userStore.findOne(1234);
+    userPromise.then((user) => {
+      console.log('click!', user);
+    });
+
   }
 
 }

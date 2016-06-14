@@ -1,9 +1,11 @@
 import * as _ from 'lodash';
 import { ReflectiveInjector, ResolvedReflectiveProvider, provide } from '@angular/core';
-import * as Controllers from './controllers';
+import * as controllers from './controllers';
 import * as dotenv from 'dotenv';
-import { Database, Logger, ConsoleLogger, coreInjector, Server } from '@ubiquits/core/server';
-import { UserStore } from './stores/user.store';
+import { Database, coreInjector, Server } from '@ubiquits/core/server';
+import { Logger, ConsoleLogger } from '@ubiquits/core/common';
+import { UserDBStore } from './stores/user.db.store';
+import { UserStore } from '../common/stores/user.store';
 
 /**
  * Load .env variables into process.env.*
@@ -13,12 +15,12 @@ dotenv.config({
 });
 
 // resolve all controllers
-let resolvedControllerProviders = ReflectiveInjector.resolve(_.values(Controllers));
+let resolvedControllerProviders = ReflectiveInjector.resolve(Object.keys(controllers).map(key => controllers[key]));
 
 // resolve all other user classes
 let resolvedProviders = ReflectiveInjector.resolve([
-  UserStore,
   provide(Logger, {useClass: ConsoleLogger}),
+  provide(UserStore, {useClass: UserDBStore}),
 ]).concat(resolvedControllerProviders);
 
 // get an injector from the resolutions, using the core injector as parent

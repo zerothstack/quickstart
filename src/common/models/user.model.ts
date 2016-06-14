@@ -1,6 +1,6 @@
-import { AbstractModel, primary, maxLength, uuid } from '@ubiquits/core/common';
+import { BaseModel, primary, maxLength, uuid, castDate } from '@ubiquits/core/common';
 
-export class User extends AbstractModel {
+export class User extends BaseModel {
 
   @primary
   public userId: uuid;
@@ -8,5 +8,6 @@ export class User extends AbstractModel {
   @maxLength(10)
   public username: string;
 
+  @castDate
   public birthday: Date;
 }
