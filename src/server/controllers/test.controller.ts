@@ -5,18 +5,16 @@ import {
   AbstractController,
   Request,
   Database,
-  RouteParamMap,
   Action
 } from '@ubiquits/core/server';
 import { Logger } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
-import { UserStore } from '../../common/stores/user.store';
 
 @Injectable()
 @RouteBase('test')
 export class TestController extends AbstractController {
 
-  constructor(server: Server, logger: Logger, protected userStore: UserStore, protected database: Database) {
+  constructor(server: Server, logger: Logger, protected database: Database) {
     super(server, logger);
 
     logger.info(`route base is ${this.routeBase}`);
@@ -26,18 +24,6 @@ export class TestController extends AbstractController {
   @Action('GET', '/test-route')
   public test() {
     return 'hello world';
-  }
-
-  protected getOneById(request: Request, routeParams: RouteParamMap): Promise<User> {
-
-    let userPromise = this.userStore.findOne(routeParams.get('id'));
-    userPromise.then((user) => {
-      this.logger.debug(user, user.getIdentifier());  
-    });
-    
-
-    return userPromise;
-
   }
 
   @Action('GET', '/db')

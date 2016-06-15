@@ -1,6 +1,6 @@
-import { BaseModel, primary, maxLength, UUID, castDate } from '@ubiquits/core/common';
+import { Model, primary, maxLength, UUID, castDate } from '@ubiquits/core/common';
 
-export class User extends BaseModel {
+export class User extends Model {
 
   static modelName:string = 'user';
   

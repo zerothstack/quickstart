@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Server,
   RouteBase,
-  AbstractController,
+  ResourceController,
   Request,
   Database,
-  RouteParamMap,
   Action
 } from '@ubiquits/core/server';
 import { Logger } from '@ubiquits/core/common';
@@ -14,18 +13,13 @@ import { UserStore } from '../../common/stores/user.store';
 
 @Injectable()
 @RouteBase('users')
-export class UserController extends AbstractController {
+export class UserController extends ResourceController<User> {
 
-  constructor(server: Server, logger: Logger, protected userStore: UserStore, protected database: Database) {
-    super(server, logger);
+  constructor(server: Server, logger: Logger, userStore: UserStore) {
+    super(server, logger, userStore);
 
     logger.info(`route base is ${this.routeBase}`);
 
-  }
-
-  protected getOneById(request: Request, routeParams: RouteParamMap): Promise<User> {
-
-    return this.userStore.findOne(routeParams.get('id'));
   }
 
 }

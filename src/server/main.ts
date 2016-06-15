@@ -15,13 +15,15 @@ dotenv.config({
 });
 
 // resolve all controllers
-let resolvedControllerProviders = ReflectiveInjector.resolve(Object.keys(controllers).map(key => controllers[key]));
+let resolvedControllerProviders = ReflectiveInjector.resolve(Object.keys(controllers)
+  .map(key => controllers[key]));
 
 // resolve all other user classes
 let resolvedProviders = ReflectiveInjector.resolve([
-  provide(Logger, {useClass: ConsoleLogger}),
-  provide(UserStore, {useClass: UserDatabaseStore}),
-]).concat(resolvedControllerProviders);
+    provide(Logger, {useClass: ConsoleLogger}),
+    provide(UserStore, {useClass: UserDatabaseStore}),
+  ])
+  .concat(resolvedControllerProviders);
 
 // get an injector from the resolutions, using the core injector as parent
 let injector = ReflectiveInjector.fromResolvedProviders(resolvedProviders, coreInjector);
@@ -33,5 +35,7 @@ export const logger: Logger = injector.get(Logger);
 // iterate over the controller providers, instantiating them to register their routes
 resolvedControllerProviders.forEach((resolvedControllerProvider: ResolvedReflectiveProvider) => {
   logger.info(`initializing ${resolvedControllerProvider.key.displayName}`);
-  injector.instantiateResolved(resolvedControllerProvider);
+  injector.instantiateResolved(resolvedControllerProvider)
+    .registerInjector(injector)
+    .registerRoutes();
 });
