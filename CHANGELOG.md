@@ -1,16 +1,47 @@
-# 0.0.5
-No CHANGELOG section found in Pull Request description.
-Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/ubiquits/quickstart/compare/v0.0.4...v0.0.5) (2016-06-16)
 
-# 0.0.3
-No CHANGELOG section found in Pull Request description.
-Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
-# 0.0.2
-No CHANGELOG section found in Pull Request description.
-Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
+### Bug Fixes
 
-# 0.0.1
-No CHANGELOG section found in Pull Request description.
-Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
+* **middleware:** Force headName to lowercase for demo middleware ([73a3c04](https://github.com/ubiquits/quickstart/commit/73a3c04))
+
+
+### Features
+
+* **bootstrap:** Refactor out the bootstrap code ([d99ee4f](https://github.com/ubiquits/quickstart/commit/d99ee4f))
+* **infrastructure:** Implement separate mock, http and db stores as concrete classes for user store. ([1cb2cc2](https://github.com/ubiquits/quickstart/commit/1cb2cc2))
+* **middleware:** Refactor with ResourceController and middleware example ([01f23db](https://github.com/ubiquits/quickstart/commit/01f23db))
+* **stores:** Implement full e2e test of model retrieval with implementations of database and http stores ([8a8d4f4](https://github.com/ubiquits/quickstart/commit/8a8d4f4))
+
+
+
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/ubiquits/quickstart/compare/v0.0.3...v0.0.4) (2016-06-08)
+
+
+
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/ubiquits/quickstart/compare/v0.0.2...v0.0.3) (2016-06-03)
+
+
+
+<a name="0.0.2"></a>
+## [0.0.2](https://github.com/ubiquits/quickstart/compare/v0.0.1...v0.0.2) (2016-06-03)
+
+
+
+<a name="0.0.1"></a>
+## [0.0.1](https://github.com/ubiquits/quickstart/compare/da1e75e...v0.0.1) (2016-06-03)
+
+
+### Features
+
+* **demo:** extracted _demo from [@ubiquits](https://github.com/ubiquits)/core ([da1e75e](https://github.com/ubiquits/quickstart/commit/da1e75e))
+* **env:** added .env example file ([25f90bc](https://github.com/ubiquits/quickstart/commit/25f90bc))
+* **infrastructure:** refactored to use new toolchain structure ([49fb2e7](https://github.com/ubiquits/quickstart/commit/49fb2e7))
+* **infrastructure:** tweaked implementation for testing ([a6a3ed6](https://github.com/ubiquits/quickstart/commit/a6a3ed6))
+* **npm:** fixed package naming ([86f2117](https://github.com/ubiquits/quickstart/commit/86f2117))
+
+
 
