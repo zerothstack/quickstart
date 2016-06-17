@@ -1,6 +1,9 @@
 import 'reflect-metadata';
-import { server, logger } from './main';
+import bootstrap from './main';
 
-server.start().then(() => {
-  logger.source('server').info('Server running at:', server.getEngine().info.uri);
+export default bootstrap.then(({server, logger}) => {
+  return server.start().then(() => {
+    logger.source('server').info('Server running at:', server.getHost());
+  });
+
 });

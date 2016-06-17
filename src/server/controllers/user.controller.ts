@@ -4,8 +4,7 @@ import {
   RouteBase,
   ResourceController,
   Request,
-  Database,
-  Action
+  Database
 } from '@ubiquits/core/server';
 import { Logger } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
