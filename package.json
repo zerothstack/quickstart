@@ -43,6 +43,6 @@
   "author": "Zak Henry (https://twitter.com/zak)",
   "license": "MIT",
   "devDependencies": {
-    "@ubiquits/toolchain": "^0.1.19"
+    "@ubiquits/toolchain": "^0.1.21"
   }
 }

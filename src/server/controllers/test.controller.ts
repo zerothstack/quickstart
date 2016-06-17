@@ -5,7 +5,7 @@ import {
   AbstractController,
   Request,
   Database,
-  Action
+  Route
 } from '@ubiquits/core/server';
 import { Logger } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
@@ -21,12 +21,12 @@ export class TestController extends AbstractController {
 
   }
 
-  @Action('GET', '/test-route')
+  @Route('GET', '/test-route')
   public test() {
     return 'hello world';
   }
 
-  @Action('GET', '/db')
+  @Route('GET', '/db')
   public databaseTest() {
 
     return this.database.query('SELECT * FROM users', {}).then((res:any[]) => {

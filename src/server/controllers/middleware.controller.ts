@@ -3,7 +3,7 @@ import {
   Server,
   RouteBase,
   AbstractController,
-  Action,
+  Route,
   Before,
   After,
   BeforeAll,
@@ -33,7 +33,7 @@ export class MiddlewareController extends AbstractController {
     super(server, logger);
   }
 
-  @Action('GET', '/example')
+  @Route('GET', '/example')
   @Before(debugLog('three'))
   @After(debugLog('five'))
   public exampleMethod(request: Request, response: Response):Response {

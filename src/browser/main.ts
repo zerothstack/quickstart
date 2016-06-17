@@ -4,9 +4,11 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { ConsoleLogger, Logger } from '@ubiquits/core/common';
 
 import { AppComponent } from './app/app.component';
-import { UserMockStore } from '../common/stores/user.mock.store';
 import { UserStore } from '../common/stores/user.store';
 import { UserHttpStore } from './stores/user.http.store';
+
+console.log(process.env);
+
 if (process.env.ENV === 'production') {
   enableProdMode();
 }
