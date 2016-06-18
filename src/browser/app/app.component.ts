@@ -10,20 +10,20 @@ import { Collection } from '@ubiquits/core/common';
 })
 export class AppComponent {
 
-  constructor(protected userStore:UserStore){
+  constructor(protected userStore: UserStore) {
 
   }
 
   public getOne() {
     let userPromise = this.userStore.findOne('72eed629-c4ab-4520-a987-4ea26b134d8c');
-    userPromise.then((user:User) => {
+    userPromise.then((user: User) => {
       console.log('Found: ', user);
     });
   }
 
   public getMany() {
     let userPromise = this.userStore.findMany();
-    userPromise.then((users:Collection<User>) => {
+    userPromise.then((users: Collection<User>) => {
       console.log('Found: ', users);
     });
   }

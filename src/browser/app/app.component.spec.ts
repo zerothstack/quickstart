@@ -6,10 +6,13 @@ import {
   expect
 } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { UserStore } from '../../common/stores/user.store';
+import { UserMockStore } from '../../common/stores/user.mock.store';
 
 describe('App', () => {
   beforeEachProviders(() => [
-    AppComponent
+    AppComponent,
+    {provide:UserStore, useClass: UserMockStore}
   ]);
   it('should work', inject([AppComponent], (app: AppComponent) => {
     // Add real test here
