@@ -10,7 +10,7 @@ import { Collection } from '@ubiquits/core/common';
 })
 export class AppComponent {
 
-  public data:any;
+  public data:any = null;
 
   constructor(protected userStore: UserStore) {
 

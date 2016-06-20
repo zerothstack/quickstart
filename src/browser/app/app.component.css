@@ -5,3 +5,46 @@ main {
   margin-top: 50px;
   display: block;
 }
+
+main h1 {
+  color: #888;
+}
+
+main h2 {
+  word-spacing: 1em;
+}
+
+main h2 span.invert {
+
+  color:#333;
+}
+
+main .background {
+  z-index: -1;
+  background-color: white;
+  width: 50%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+main .logo-group {
+  text-align: center;
+}
+
+.logo-group img {
+  height: 200px;
+}
+
+.logo-group span {
+  color: #888;
+  font-size: 200px;
+}
+
+main pre > code {
+  background: #333;
+  padding: 30px;
+  text-align: left;
+  display: inline-block;
+}

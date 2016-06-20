@@ -30,6 +30,7 @@ let storesPromise = Database.checkDatabase().then(() => {
 });
 
 let providers:ProviderDefinition[] = [
+  UserMockStore,
   {provide: Logger, useClass: ConsoleLogger},
   // provide(Server, {useClass: HapiServer}), //override
 ];
