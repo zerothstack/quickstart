@@ -4,6 +4,7 @@
   "license": "MIT",
   "version": "0.0.6",
   "description": "Isomorphic Javascript Framework build in TypeScript",
+  "homepage": "https://github.com/ubiquits/quickstart#readme",
   "main": "index.js",
   "dependencies": {
     "@angular/common": "2.0.0-rc.2",
