@@ -1,5 +1,5 @@
-<a name="0.0.5"></a>
-## [0.0.5](https://github.com/ubiquits/quickstart/compare/v0.0.4...v0.0.5) (2016-06-16)
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/ubiquits/quickstart/compare/v0.0.4...v0.0.6) (2016-06-18)
 
 
 ### Bug Fixes
@@ -9,7 +9,9 @@
 
 ### Features
 
+* **bootstrap:** Implement async bootstrapping with check for database status so fallback to mock will work ([7ece712](https://github.com/ubiquits/quickstart/commit/7ece712))
 * **bootstrap:** Refactor out the bootstrap code ([d99ee4f](https://github.com/ubiquits/quickstart/commit/d99ee4f))
+* **changelog:** Updated changelog, add pr-bumper config to suppress changelog overwriting ([0a79445](https://github.com/ubiquits/quickstart/commit/0a79445))
 * **infrastructure:** Implement separate mock, http and db stores as concrete classes for user store. ([1cb2cc2](https://github.com/ubiquits/quickstart/commit/1cb2cc2))
 * **middleware:** Refactor with ResourceController and middleware example ([01f23db](https://github.com/ubiquits/quickstart/commit/01f23db))
 * **stores:** Implement full e2e test of model retrieval with implementations of database and http stores ([8a8d4f4](https://github.com/ubiquits/quickstart/commit/8a8d4f4))
