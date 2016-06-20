@@ -10,21 +10,23 @@ import { Collection } from '@ubiquits/core/common';
 })
 export class AppComponent {
 
+  public data:any;
+
   constructor(protected userStore: UserStore) {
 
   }
 
   public getOne() {
-    let userPromise = this.userStore.findOne('72eed629-c4ab-4520-a987-4ea26b134d8c');
+    let userPromise = this.userStore.findOne(process.env.DEMO_ID);
     userPromise.then((user: User) => {
-      console.log('Found: ', user);
+      this.data = user;
     });
   }
 
   public getMany() {
     let userPromise = this.userStore.findMany();
     userPromise.then((users: Collection<User>) => {
-      console.log('Found: ', users);
+      this.data = users;
     });
   }
 

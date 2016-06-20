@@ -8,8 +8,24 @@ import { Logger } from '@ubiquits/core/common';
 @Injectable()
 export class UserDatabaseStore extends DatabaseStore<User> implements UserStore {
 
-  constructor(database: Database, loggerBase: Logger){
+  constructor(database: Database, loggerBase: Logger) {
     super(User, database, loggerBase);
+
+    // this is just for demo purposes so on first init the database has a record
+    this.initialized
+      .then(() => this.orm.findByPrimary(process.env.DEMO_ID))
+      .then((instance: any) => {
+        if (instance) { //model already created
+          this.logger.debug('Demo model already created');
+          return;
+        }
+        this.logger.debug('Creating demo model');
+        return this.orm.create({
+          userId: process.env.DEMO_ID,
+          username: 'janedoe',
+          birthday: new Date(1980, 6, 20)
+        });
+      });
   }
 
 }
