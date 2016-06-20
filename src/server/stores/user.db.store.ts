@@ -22,17 +22,17 @@ export class UserDatabaseStore extends DatabaseStore<User> implements UserStore 
         }
         this.logger.debug('Creating demo models');
 
-        return userMockStore.findMany();
-      })
-      .then((mockModels: any[]) => {
+        return userMockStore.findMany()
+          .then((mockModels: any[]) => {
 
-        mockModels.push({
-          userId: process.env.DEMO_ID,
-          username: 'janedoe',
-          birthday: new Date(1980, 6, 20)
-        });
+            mockModels.push({
+              userId: process.env.DEMO_ID,
+              username: 'janedoe',
+              birthday: new Date(1980, 6, 20)
+            });
 
-        return this.orm.bulkCreate(mockModels);
+            return this.orm.bulkCreate(mockModels);
+          });
       });
   }
 
