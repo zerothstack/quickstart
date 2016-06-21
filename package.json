@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "u",
-    "test": "u test",
+    "test": "u test -s",
     "coveralls": "u coveralls",
     "build": "u build",
     "postinstall": "typings install",
