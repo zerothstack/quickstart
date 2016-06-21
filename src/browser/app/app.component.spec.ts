@@ -12,6 +12,7 @@ import { UserMockStore } from '../../common/stores/user.mock.store';
 describe('App', () => {
   beforeEachProviders(() => [
     AppComponent,
+    UserMockStore,
     {provide:UserStore, useClass: UserMockStore}
   ]);
   it('should work', inject([AppComponent], (app: AppComponent) => {
