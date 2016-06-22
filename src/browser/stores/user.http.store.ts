@@ -3,13 +3,13 @@ import { Logger } from '@ubiquits/core/common';
 import { HttpStore } from '@ubiquits/core/browser';
 import { User } from '../../common/models/user.model';
 
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Injectable()
 export class UserHttpStore extends HttpStore<User> implements UserStore {
 
-  constructor(http: Http, loggerBase: Logger) {
+  constructor(injector:Injector, http: Http, loggerBase: Logger) {
     /**
      * @todo resolve why the <any>http is needed to suppress the following error:
      *
@@ -20,7 +20,7 @@ export class UserHttpStore extends HttpStore<User> implements UserStore {
      * It may have something to do with both ubiquits/core and the current project
      * depending on angular so TS thinks they could be different implementations?
      */
-    super(User, <any>http, loggerBase);
+    super(User, injector, <any>http, loggerBase);
   }
 
   protected endpoint(id?: string): string {

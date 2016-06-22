@@ -15,7 +15,7 @@ import * as controllers from './controllers';
 import { UserStore } from '../common/stores/user.store';
 import { UserMockStore } from '../common/stores/user.mock.store';
 
-let storesPromise = Database.checkDatabase().then(() => {
+let storesPromise = Database.connect().then(() => {
   
   deferredLog('debug', 'database is up, using database stores');
   

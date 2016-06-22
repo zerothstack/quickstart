@@ -1,10 +1,12 @@
 import { Store } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
+import { Injector, Injectable } from '@angular/core';
 
-export abstract class UserStore extends Store<User>{
+@Injectable()
+export abstract class UserStore extends Store<User> {
 
-  constructor(){
-    super(User);
+  constructor(injector: Injector) {
+    super(User, injector);
   }
 
 }
