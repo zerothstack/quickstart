@@ -12,7 +12,9 @@
         </a>
     </div>
 
-    <button (click)="getOne()">GET One</button>
-    <button (click)="getMany()">GET Many</button>
-    <pre><code>{{data|json}}</code></pre>
+    <button (click)="findOne()">Find One</button>
+    <button (click)="findMany()">Find Many</button>
+    <button (click)="saveOne()">Save One</button>
+    <pre><code>{{requestData|json}}</code></pre>
+    <pre><code>{{responseData|json}}</code></pre>
 </main>

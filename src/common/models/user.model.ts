@@ -1,4 +1,5 @@
-import { Model, primary, maxLength, UUID, castDate, StoredProperty } from '@ubiquits/core/common';
+import { Model, primary, UUID, castDate, StoredProperty } from '@ubiquits/core/common';
+import {MaxLength} from '@ubiquits/core/common';
 
 export class User extends Model {
 
@@ -8,7 +9,7 @@ export class User extends Model {
   public userId: UUID;
 
   @StoredProperty
-  @maxLength(10)
+  @MaxLength(6)
   public username: string;
 
   @StoredProperty
