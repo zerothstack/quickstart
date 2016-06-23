@@ -1,4 +1,10 @@
-import { bootstrap, deferredLog, Database, ProviderDefinition } from '@ubiquits/core/server';
+import {
+  bootstrap,
+  deferredLog,
+  Database,
+  ProviderDefinition,
+  BootstrapResponse
+} from '@ubiquits/core/server';
 import { Logger, ConsoleLogger } from '@ubiquits/core/common';
 import { UserDatabaseStore } from './stores/user.db.store';
 import { UserStore } from '../common/stores/user.store';
@@ -58,4 +64,7 @@ let storesPromise = Database.connect(deferredLog)
 
 providers.push(storesPromise);
 
+// export the type so consumers know what to hook into
+export { BootstrapResponse };
+// export the bootstrap promise factory so runtime bootstrap or test runner can kick the server off
 export default bootstrap(loadClasses, providers);
