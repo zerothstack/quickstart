@@ -1,6 +1,7 @@
-import { Model, Primary, UUID, castDate, StoredProperty } from '@ubiquits/core/common';
+import { Model, Primary, UUID, castDate, StoredProperty, StoredModel } from '@ubiquits/core/common';
 import {MaxLength} from '@ubiquits/core/common';
 
+@StoredModel('users')
 export class User extends Model {
 
   static modelName:string = 'user';
