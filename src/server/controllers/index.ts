@@ -1,3 +1,3 @@
-export {TestController} from './test.controller';
-export {UserController} from './user.controller';
-export {MiddlewareController} from './middleware.controller';
+export * from './test.controller';
+export * from './user.controller';
+export * from './middleware.controller';

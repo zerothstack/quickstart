@@ -3,11 +3,12 @@ import { Collection } from '@ubiquits/core/common';
 import { DatabaseStore, Database, NotFoundException } from '@ubiquits/core/server';
 import { Injectable, Injector } from '@angular/core';
 import { User } from '../../common/models/user.model';
-import { Logger } from '@ubiquits/core/common';
+import { Logger, Seeder } from '@ubiquits/core/common';
 import { UserMockStore } from '../../common/stores/user.mock.store';
 import { UserDatabaseStore } from '../stores/user.db.store';
 
 @Injectable()
+@Seeder()
 export class DemoSeeder {
 
   protected logger:Logger;

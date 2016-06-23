@@ -6,12 +6,13 @@ import {
   Request,
   Database
 } from '@ubiquits/core/server';
-import { Logger } from '@ubiquits/core/common';
+import { Logger, Controller } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
 import { UserStore } from '../../common/stores/user.store';
 
 @Injectable()
 @RouteBase('users')
+@Controller()
 export class UserController extends ResourceController<User> {
 
   constructor(server: Server, logger: Logger, userStore: UserStore) {
