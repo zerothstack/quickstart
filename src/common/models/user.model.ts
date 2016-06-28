@@ -1,12 +1,9 @@
-import { Model, BaseModel, Primary, UUID, castDate, StoredProperty, StoredModel } from '@ubiquits/core/common';
+import { Model, BaseModel, Primary, UUID, StoredProperty, CreateDate, UpdateDate } from '@ubiquits/core/common';
 import {MaxLength} from '@ubiquits/core/common';
 
-@StoredModel('users')
-@Model()
+@Model('users')
 export class User extends BaseModel {
 
-  static modelName:string = 'user';
-  
   @Primary()
   public userId: string; //UUID
 
@@ -15,14 +12,11 @@ export class User extends BaseModel {
   public username: string;
 
   @StoredProperty()
-  @castDate
   public birthday: Date;
 
-  @StoredProperty()
-  @castDate
+  @CreateDate()
   public createdAt: Date;
 
-  @StoredProperty()
-  @castDate
+  @UpdateDate()
   public updatedAt: Date;
 }

@@ -23,14 +23,4 @@ export class UserHttpStore extends HttpStore<User> implements UserStore {
     super(User, injector, <any>http, loggerBase);
   }
 
-  protected endpoint(id?: string): string {
-
-    let endpoint = `${process.env.API_BASE}/users`;
-
-    if (id) {
-      endpoint += `/${id}`;
-    }
-    return endpoint;
-  };
-
 }

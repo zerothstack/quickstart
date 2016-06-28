@@ -33,8 +33,10 @@ export class DemoSeeder {
         if (e instanceof NotFoundException){
           this.logger.debug('Creating demo models');
 
-          return this.userMockStore.findMany()
-            .then((mockModels: Collection<User>) => {
+          return this.userMockStore.findOne()
+            .then((mockModel: User) => {
+
+              let mockModels = [mockModel];
 
               return this.userMockStore.findOne(process.env.DEMO_ID)
                 .then((user: User) => {
