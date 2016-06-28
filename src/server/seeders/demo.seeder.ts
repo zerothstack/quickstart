@@ -26,7 +26,7 @@ export class DemoSeeder {
       .then(() => this.userStore.findOne(process.env.DEMO_ID))
       .then((instance: User) => {
 
-        this.logger.debug('Demo model already seeded', instance);
+        this.logger.debug('Demo model already seeded');
       })
       .catch((e) => {
 
