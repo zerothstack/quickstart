@@ -6,6 +6,6 @@ services:
       file: ./node_modules/@ubiquits/core/docker/common-services.yml
       service: database
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:${DB_PORT}"
     env_file:
       - .env

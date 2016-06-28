@@ -13,7 +13,7 @@ import {
   Response,
   IsolatedMiddlewareFactory
 } from '@ubiquits/core/server';
-import { Logger } from '@ubiquits/core/common';
+import { Logger, Controller } from '@ubiquits/core/common';
 
 function forwardHeader(headerName: string):IsolatedMiddlewareFactory {
   //use a named function here so the call stack can easily be debugged to show the called middleware
@@ -24,6 +24,7 @@ function forwardHeader(headerName: string):IsolatedMiddlewareFactory {
 }
 
 @Injectable()
+@Controller()
 @RouteBase('middleware')
 @BeforeAll(debugLog('one'), debugLog('two'), forwardHeader('User-Agent'))
 @AfterAll(debugLog('six'))
