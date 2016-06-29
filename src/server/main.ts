@@ -13,6 +13,7 @@ import { Injector } from '@angular/core';
 import * as seeders from './seeders';
 import * as models from '../common/models';
 import * as controllers from './controllers';
+import * as migrations from './migrations';
 
 /**
  * This is the full set of classes that need to be initialised on startup. This is like the
@@ -21,7 +22,7 @@ import * as controllers from './controllers';
  * @type {any[]}
  */
 let loadClasses = [
-  models, controllers, seeders
+  models, controllers, seeders, migrations
 ];
 
 /**
@@ -43,12 +44,6 @@ let providers: ProviderDefinition[] = [
  * just want to use mock values
  */
 let storesPromise = Database.connect(deferredLog)
-  .then((connection: any) => {
-
-    //@todo if localhost AND requested to sync/reload. Probably will just remove entirely and
-    // only run with migrations use SchemaCreatorFactory
-    return connection.syncSchema(false);
-  })
   .then(() => {
     deferredLog('debug', 'database is up, using database stores');
     return [
