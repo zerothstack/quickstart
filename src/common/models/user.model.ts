@@ -1,7 +1,29 @@
-import { Model, BaseModel, Primary, UUID, StoredProperty, CreateDate, UpdateDate } from '@ubiquits/core/common';
-import {MaxLength} from '@ubiquits/core/common';
+import {
+  Model,
+  BaseModel,
+  Primary,
+  UUID,
+  StoredProperty,/*, CreateDate, UpdateDate*/
+  HasOne
+} from '@ubiquits/core/common';
+import { MaxLength } from '@ubiquits/core/common';
 
-@Model('users')
+@Model({
+  storageKey: 'pets',
+})
+export class Pet extends BaseModel {
+
+  @Primary()
+  public petId: string;
+
+  @StoredProperty()
+  public name:string;
+
+}
+
+@Model({
+  storageKey: 'users',
+})
 export class User extends BaseModel {
 
   @Primary()
@@ -14,9 +36,16 @@ export class User extends BaseModel {
   @StoredProperty()
   public birthday: Date;
 
-  @CreateDate()
+  // @CreateDate()
   public createdAt: Date;
 
-  @UpdateDate()
+  // @UpdateDate()
   public updatedAt: Date;
+
+  @HasOne(Pet)
+  public pet:Pet
 }
+
+
+
+
