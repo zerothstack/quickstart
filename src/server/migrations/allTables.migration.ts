@@ -1,4 +1,4 @@
-import { BaseMigration, Database } from '@ubiquits/core/server';
+import { AbstractMigration, Database } from '@ubiquits/core/server';
 import { Migration, Logger } from '@ubiquits/core/common';
 
 /**
@@ -7,7 +7,7 @@ import { Migration, Logger } from '@ubiquits/core/common';
  * @todo(zh) when full migration capabilities are implemented refactor this class
  */
 @Migration()
-export class AllTablesMigration extends BaseMigration {
+export class AllTablesMigration extends AbstractMigration {
 
   constructor(logger:Logger, database:Database){
     super(logger, database);
@@ -15,10 +15,18 @@ export class AllTablesMigration extends BaseMigration {
 
   public migrate(): Promise<void> {
     return this.database.getConnection().then((connection:any) => {
+      if (!connection){ //mock
+        this.logger.warning('no database connection, skipping migration');
+        return;
+      }
       this.logger.debug('syncing all schemas');
       return connection.syncSchema(true);
     });
 
+  }
+  
+  public rollback():Promise<void> {
+    return Promise.resolve();
   }
 
 }

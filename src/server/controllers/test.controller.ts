@@ -5,23 +5,24 @@ import {
   AbstractController,
   Request,
   Response,
-  Database,
   Route
 } from '@ubiquits/core/server';
 import { Logger, Controller } from '@ubiquits/core/common';
-import { User } from '../../common/models/user.model';
+import { ExampleService } from '../services/example.service';
 
 @Injectable()
 @Controller()
 @RouteBase('example')
 export class TestController extends AbstractController {
 
-  constructor(server: Server, logger: Logger) {
+  constructor(server: Server, logger: Logger, protected exampleService: ExampleService) {
     super(server, logger);
+
   }
 
   @Route('GET', '/test')
   public test(request: Request, response: Response): Response {
+    this.exampleService.logTest('Calling service from controller');
     return response.data('hello world');
   }
 

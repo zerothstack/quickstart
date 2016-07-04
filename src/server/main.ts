@@ -2,6 +2,7 @@ import {
   bootstrap,
   deferredLog,
   Database,
+  DatabaseMock,
   ProviderDefinition,
   BootstrapResponse
 } from '@ubiquits/core/server';
@@ -14,6 +15,7 @@ import * as seeders from './seeders';
 import * as models from '../common/models';
 import * as controllers from './controllers';
 import * as migrations from './migrations';
+import * as services from './services';
 
 /**
  * This is the full set of classes that need to be initialised on startup. This is like the
@@ -22,7 +24,7 @@ import * as migrations from './migrations';
  * @type {any[]}
  */
 let loadClasses = [
-  models, controllers, seeders, migrations
+  models, controllers, seeders, migrations, services
 ];
 
 /**
@@ -53,6 +55,7 @@ let storesPromise = Database.connect(deferredLog)
   .catch(() => {
     deferredLog('warning', 'database could not connect, using mock stores');
     return [
+      {provide: Database, useClass: DatabaseMock},
       {provide: UserStore, useClass: UserMockStore},
     ]
   });
