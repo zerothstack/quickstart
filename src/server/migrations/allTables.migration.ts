@@ -15,6 +15,7 @@ export class AllTablesMigration extends BaseMigration {
 
   public migrate(): Promise<void> {
     return this.database.getConnection().then((connection:any) => {
+      this.logger.debug('syncing all schemas');
       return connection.syncSchema(true);
     });
 
