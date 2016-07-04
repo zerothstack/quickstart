@@ -1,6 +1,6 @@
 import {
   Model,
-  BaseModel,
+  AbstractModel,
   Primary,
   UUID,
   StoredProperty,
@@ -13,7 +13,7 @@ import {
 @Model({
   storageKey: 'pets',
 })
-export class Pet extends BaseModel {
+export class Pet extends AbstractModel {
 
   @Primary()
   public petId: string;
@@ -26,7 +26,7 @@ export class Pet extends BaseModel {
 @Model({
   storageKey: 'users',
 })
-export class User extends BaseModel {
+export class User extends AbstractModel {
 
   @Primary()
   public userId: string; //UUID

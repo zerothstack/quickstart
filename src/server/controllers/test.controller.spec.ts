@@ -1,9 +1,3 @@
-import {
-  it,
-  describe,
-  expect
-} from '@angular/core/testing';
-
 describe('Test api', () => {
 
   it('should pass', () => {

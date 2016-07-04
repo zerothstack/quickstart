@@ -1,6 +1,6 @@
 import { UserStore } from '../../common/stores/user.store';
 import { Logger, Seeder } from '@ubiquits/core/common';
-import { NotFoundException, BaseSeeder } from '@ubiquits/core/server';
+import { NotFoundException, AbstractSeeder } from '@ubiquits/core/server';
 import { Injectable } from '@angular/core';
 import { User } from '../../common/models/user.model';
 import { UserMockStore } from '../../common/stores/user.mock.store';
@@ -8,13 +8,12 @@ import { UserDatabaseStore } from '../stores/user.db.store';
 
 @Injectable()
 @Seeder()
-export class DemoSeeder extends BaseSeeder {
+export class DemoSeeder extends AbstractSeeder {
 
   protected logger: Logger;
 
   constructor(loggerBase: Logger, protected userStore: UserStore, protected userMockStore: UserMockStore) {
-    super();
-    this.logger = loggerBase.source('Demo Seeder');
+    super(loggerBase);
   }
 
   public seed(): Promise<void> {
