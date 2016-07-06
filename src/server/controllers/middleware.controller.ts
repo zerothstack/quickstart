@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   Server,
-  RouteBase,
   AbstractController,
   Route,
   Before,
@@ -24,8 +23,9 @@ function forwardHeader(headerName: string):IsolatedMiddlewareFactory {
 }
 
 @Injectable()
-@Controller()
-@RouteBase('middleware')
+@Controller({
+  routeBase: 'middleware'
+})
 @BeforeAll(debugLog('one'), debugLog('two'), forwardHeader('User-Agent'))
 @AfterAll(debugLog('six'))
 export class MiddlewareController extends AbstractController {
