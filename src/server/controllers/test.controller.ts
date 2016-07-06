@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Server, AbstractController, Request, Response, Route } from '@ubiquits/core/server';
+import { AbstractController, Request, Response, Route } from '@ubiquits/core/server';
 import { Logger, Controller } from '@ubiquits/core/common';
 import { ExampleService } from '../services/example.service';
 
@@ -9,8 +9,8 @@ import { ExampleService } from '../services/example.service';
 })
 export class TestController extends AbstractController {
 
-  constructor(server: Server, logger: Logger, protected exampleService: ExampleService) {
-    super(server, logger);
+  constructor(logger: Logger, protected exampleService: ExampleService) {
+    super(logger);
 
   }
 
