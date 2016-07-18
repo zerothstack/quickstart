@@ -7,6 +7,7 @@ import {
   CreatedDate,
   UpdatedDate,
   HasOne,
+  BelongsTo,
   MaxLength
 } from '@ubiquits/core/common';
 import { User } from './user.model';

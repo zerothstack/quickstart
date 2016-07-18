@@ -7,8 +7,10 @@ import {
   CreatedDate,
   UpdatedDate,
   HasOne,
+  BelongsTo,
   MaxLength
 } from '@ubiquits/core/common';
+import { Pet } from './pet.model';
 
 @Model({
   storageKey: 'users',
