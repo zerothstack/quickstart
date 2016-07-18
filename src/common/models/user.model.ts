@@ -7,21 +7,10 @@ import {
   CreatedDate,
   UpdatedDate,
   HasOne,
+  BelongsTo,
   MaxLength
 } from '@ubiquits/core/common';
-
-@Model({
-  storageKey: 'pets',
-})
-export class Pet extends AbstractModel {
-
-  @Primary()
-  public petId: string;
-
-  @StoredProperty()
-  public name: string;
-
-}
+import { Pet } from './pet.model';
 
 @Model({
   storageKey: 'users',
@@ -44,7 +33,7 @@ export class User extends AbstractModel {
   @UpdatedDate()
   public updatedAt: Date;
 
-  @HasOne(Pet)
+  @HasOne(f => Pet)
   public pet: Pet
 }
 
