@@ -11,19 +11,6 @@ import {
 } from '@ubiquits/core/common';
 
 @Model({
-  storageKey: 'pets',
-})
-export class Pet extends AbstractModel {
-
-  @Primary()
-  public petId: string;
-
-  @StoredProperty()
-  public name: string;
-
-}
-
-@Model({
   storageKey: 'users',
 })
 export class User extends AbstractModel {
@@ -44,7 +31,7 @@ export class User extends AbstractModel {
   @UpdatedDate()
   public updatedAt: Date;
 
-  @HasOne(Pet)
+  @HasOne(f => Pet)
   public pet: Pet
 }
 
