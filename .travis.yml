@@ -23,9 +23,6 @@ before_install:
 - pr-bumper check
 - cp .env.example .env
 - sudo apt-get update
-#- sudo apt-get install -y libappindicator1 fonts-liberation
-#- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#- sudo dpkg -i google-chrome*.deb
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
@@ -36,12 +33,13 @@ script:
 - npm run build
 after_success:
 - npm run coveralls
+before_deploy:
 - eval "$(ssh-agent -s)" #start the ssh agent
 - chmod 600 .travis/deployment_key.pem
 - ssh-add .travis/deployment_key.pem
-before_deploy:
 - pr-bumper bump
-- u doc:build
+- git fetch --tags # make sure travis ci has all remote tags for changelog
+- npm run preparepublish
 env:
   global:
   # pr-bumper-GITHUB_TOKEN-ubiquits/ubiquits
