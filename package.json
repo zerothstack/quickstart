@@ -2,7 +2,7 @@
   "name": "@ubiquits/quickstart",
   "author": "Zak Henry (https://twitter.com/zak)",
   "license": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Isomorphic Javascript Framework build in TypeScript",
   "homepage": "https://github.com/ubiquits/quickstart#readme",
   "main": "index.js",
