@@ -4,6 +4,7 @@ import { UserStore } from '../../common/stores/user.store';
 import { User } from '../../common/models/user.model';
 import { Collection, Logger } from '@ubiquits/core/common';
 import { UserMockStore } from '../../common/stores/user.mock.store';
+
 @Component({
   selector: 'my-app',
   template: require('./app.component.html'),

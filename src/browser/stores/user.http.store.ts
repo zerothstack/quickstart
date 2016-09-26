@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 @Injectable()
 export class UserHttpStore extends HttpStore<User> implements UserStore {
 
-  constructor(injector:Injector, http: Http, loggerBase: Logger) {
+  constructor(injector: Injector, http: Http, loggerBase: Logger) {
     /**
      * @todo resolve why the <any>http is needed to suppress the following error:
      *

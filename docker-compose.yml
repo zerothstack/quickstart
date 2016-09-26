@@ -24,3 +24,4 @@ services:
       - NODE_ENTRYPOINT=/data/dist/server/server/bootstrap.js
       - NGINX_VHOSTS=/data/docker/vhosts/*.conf
       - DB_HOST=database
+      - PATH_ROOT=/data
