@@ -9,9 +9,10 @@ import {
   debugLog,
   Request,
   Response,
-  IsolatedMiddlewareFactory
+  IsolatedMiddlewareFactory,
+  Controller,
 } from '@ubiquits/core/server';
-import { Logger, Controller } from '@ubiquits/core/common';
+import { Logger } from '@ubiquits/core/common';
 
 function forwardHeader(headerName: string):IsolatedMiddlewareFactory {
   //use a named function here so the call stack can easily be debugged to show the called middleware

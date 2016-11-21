@@ -13,6 +13,7 @@
     "outDir": "dist/browser",
     "skipLibCheck": true,
     "types": [
+      "node",
       "jasmine",
       "chance"
     ]

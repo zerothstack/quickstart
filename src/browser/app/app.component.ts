@@ -12,19 +12,19 @@ import { UserMockStore } from '../../common/stores/user.mock.store';
 })
 export class AppComponent {
 
-  public requestData: any = null;
+  public requestData: any  = null;
   public responseData: any = null;
 
-  constructor(protected userStore: UserStore, protected userMockStore: UserMockStore, protected logger:Logger) {
+  constructor(protected userStore: UserStore, protected userMockStore: UserMockStore, protected logger: Logger) {
 
   }
 
-  private resetData():void {
-    this.requestData =  null;
-    this.responseData =  null;
+  private resetData(): void {
+    this.requestData  = null;
+    this.responseData = null;
   }
 
-  private assignResponse(data:any){
+  private assignResponse(data: any) {
     this.logger.debug('Response', data);
     this.responseData = data;
   }
@@ -33,42 +33,36 @@ export class AppComponent {
    * Get a user (the DEMO_ID user)
    * @returns {Promise<TResult>}
    */
-  public findOne() {
+  public async findOne(): Promise<void> {
     this.resetData();
-    return this.userStore.findOne(process.env.DEMO_ID)
-      .then((user: User) => {
-        this.assignResponse(user);
-        this.responseData = user;
-      });
+    const user: User = await this.userStore.findOne(process.env.DEMO_ID);
+    this.assignResponse(user);
   }
 
   /**
    * Get many users
    * @returns {Promise<TResult>}
    */
-  public findMany() {
+  public async findMany(): Promise<void> {
     this.resetData();
-    return this.userStore.findMany()
-      .then((users: Collection<User>) => {
-        this.assignResponse(users);
-      });
+
+    const users: Collection<User> = await this.userStore.findMany();
+    this.assignResponse(users);
   }
 
   /**
    * Create a new user from mock and save it
    */
-  public saveOne() {
+  public async saveOne(): Promise<void> {
     this.resetData();
-    return this.userMockStore.findOne(null)
-      .then((user:User) => {
-        this.requestData = user;
-        return this.userStore.saveOne(user);
-      })
-      .then((result) => {
-        this.assignResponse(result);
-      }).catch((result) => {
-        this.assignResponse(result);
-      });
+    const user: User = await this.userMockStore.findOne(null);
+    try {
+      const saveResult = await this.userStore.saveOne(user);
+      this.assignResponse(saveResult);
+    } catch (e) {
+      this.assignResponse(e);
+      this.logger.error(e);
+    }
 
   }
 

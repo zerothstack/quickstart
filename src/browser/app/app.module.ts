@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { UserStore } from '../../common/stores/user.store';
 import { UserMockStore } from '../../common/stores/user.mock.store';
 import { ConsoleLogger, Logger } from '@ubiquits/core/common';
+import { UserHttpStore } from '../stores/user.http.store';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { ConsoleLogger, Logger } from '@ubiquits/core/common';
   bootstrap: [ AppComponent ],
   providers: [
     UserMockStore,
-    { provide: UserStore, useClass: UserMockStore },
+    { provide: UserStore, useClass: UserHttpStore },
     { provide: Logger, useClass: ConsoleLogger },
   ]
 })

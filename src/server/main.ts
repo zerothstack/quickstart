@@ -45,20 +45,22 @@ let providers: ProviderDefinition[] = [
  * This is a good technique for frontend development where you still want server interaction, but
  * just want to use mock values
  */
-let storesPromise = Database.connect(deferredLog)
-  .then(() => {
+let storesPromise = async function(): Promise<ProviderDefinition[]> {
+  try {
+    const connection = await Database.connect('test', deferredLog);
+    connection.close();
     deferredLog('debug', 'database is up, using database stores');
     return [
       {provide: UserStore, useClass: UserDatabaseStore},
     ];
-  })
-  .catch(() => {
+  } catch (e) {
     deferredLog('warning', 'database could not connect, using mock stores');
     return [
       {provide: Database, useClass: DatabaseMock},
       {provide: UserStore, useClass: UserMockStore},
     ]
-  });
+  }
+}();
 
 providers.push(storesPromise);
 
