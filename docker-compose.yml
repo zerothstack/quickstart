@@ -11,7 +11,7 @@ services:
       - .env
 
   app:
-    image: node:6.3.1
+    image: node:6.9.1
     volumes:
       - .:/data
     command: node /data/dist/server/server/bootstrap.js
@@ -24,3 +24,4 @@ services:
       - NODE_ENTRYPOINT=/data/dist/server/server/bootstrap.js
       - NGINX_VHOSTS=/data/docker/vhosts/*.conf
       - DB_HOST=database
+      - PATH_ROOT=/data

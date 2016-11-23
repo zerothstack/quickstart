@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AbstractController, Request, Response, Route } from '@ubiquits/core/server';
-import { Logger, Controller } from '@ubiquits/core/common';
+import { AbstractController, Request, Response, Route, Controller } from '@ubiquits/core/server';
+import { Logger } from '@ubiquits/core/common';
 import { ExampleService } from '../services/example.service';
 
 @Injectable()

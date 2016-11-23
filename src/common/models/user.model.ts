@@ -20,8 +20,8 @@ export class User extends AbstractModel {
   @Primary()
   public userId: string; //UUID
 
-  @StoredProperty({length: '6'})
-  @MaxLength(6)
+  @StoredProperty({length: '12'})
+  @MaxLength(12)
   public username: string;
 
   @StoredProperty({type: 'date'})

@@ -1,6 +1,6 @@
 import { UserStore } from '../../common/stores/user.store';
-import { Logger, Seeder } from '@ubiquits/core/common';
-import { AbstractSeeder } from '@ubiquits/core/server';
+import { Logger } from '@ubiquits/core/common';
+import { AbstractSeeder, Seeder } from '@ubiquits/core/server';
 import { Injectable } from '@angular/core';
 import { User } from '../../common/models/user.model';
 import { UserMockStore } from '../../common/stores/user.mock.store';
@@ -17,39 +17,34 @@ export class DemoSeeder extends AbstractSeeder {
     super(loggerBase);
   }
 
-  public seed(): Promise<void> {
-    this.logger.info('Seeding database');
-    return this.userStore.initialized()
-      .then(() => this.userStore.findOne(process.env.DEMO_ID))
-      .then((instance: User) => {
+  public async seed(): Promise<User[] > {
+    this.logger.info('Seeding db', this.userStore);
 
-        this.logger.debug('Demo model already seeded');
-      })
-      .catch((e) => {
+    await this.userStore.initialized();
 
-        if (!(e instanceof NotFoundException)) {
-          throw e;
-        }
-        
-        this.logger.debug('Creating demo models');
+    try {
+      const user: User = await this.userStore.findOne(process.env.DEMO_ID);
+      this.logger.debug('Demo model already seeded');
+      return [user];
+    } catch (e) {
+      if (!(e instanceof NotFoundException)) {
+        throw e;
+      }
 
-        return this.userMockStore.findOne()
-          .then((mockModel: User) => {
+    }
 
-            let mockModels = [mockModel];
+    this.logger.debug('Creating demo models');
 
-            return this.userMockStore.findOne(process.env.DEMO_ID)
-              .then((user: User) => {
-                mockModels.push(user);
-                return (this.userStore as UserDatabaseStore).getRepository()
-                  .then((repo: any) => repo.persistMany(...mockModels));
-              });
+    const mockModel: User = await this.userMockStore.findOne();
+    let mockModels = [mockModel];
 
-          });
-        
-      }).then(() => {
-        this.logger.info('Seeding Completed');
-      });
+    const dbUser: User = await this.userMockStore.findOne(process.env.DEMO_ID);
+
+    mockModels.push(dbUser);
+
+    const repo = await (this.userStore as UserDatabaseStore).getRepository();
+
+    return repo.persist(mockModels);
   }
 
 }

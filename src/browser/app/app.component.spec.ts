@@ -1,20 +1,34 @@
-import { it, xit, inject, describe, beforeEachProviders, expect } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { UserStore } from '../../common/stores/user.store';
 import { UserMockStore } from '../../common/stores/user.mock.store';
 import { ConsoleLogger, Logger } from '@ubiquits/core/common';
+import { TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing/component_fixture';
+import { Injector } from '@angular/core';
 
 describe('App', () => {
-  beforeEachProviders(() => [
-    AppComponent,
-    UserMockStore,
-    {provide:UserStore, useClass: UserMockStore},
-    {provide: Logger, useClass: ConsoleLogger},
-  ]);
-  it('should work', inject([AppComponent], (app: AppComponent) => {
+
+  let context: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
+
+    context = TestBed.configureTestingModule({
+      declarations: [ AppComponent ],
+      providers: [
+        Injector,
+        UserMockStore,
+        {provide:UserStore, useClass: UserMockStore},
+        {provide: Logger, useClass: ConsoleLogger},
+      ]
+    })
+      .createComponent(AppComponent)
+
+  });
+
+  it('should work', () => {
     // Add real test here
-    expect(2).toBe(2);
-  }));
+    expect(context.componentInstance instanceof AppComponent).toBe(true);
+  });
 
   xit('should skip', () => {
     expect(true).toBe(false);

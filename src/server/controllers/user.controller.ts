@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ResourceController } from '@ubiquits/core/server';
-import { Logger, Controller } from '@ubiquits/core/common';
+import { ResourceController, Controller } from '@ubiquits/core/server';
+import { Logger } from '@ubiquits/core/common';
 import { User } from '../../common/models/user.model';
 import { UserStore } from '../../common/stores/user.store';
 

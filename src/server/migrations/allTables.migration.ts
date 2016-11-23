@@ -1,5 +1,5 @@
-import { AbstractMigration, Database } from '@ubiquits/core/server';
-import { Migration, Logger } from '@ubiquits/core/common';
+import { AbstractMigration, Database, Migration } from '@ubiquits/core/server';
+import { Logger } from '@ubiquits/core/common';
 
 /**
  * Note!
@@ -13,16 +13,16 @@ export class AllTablesMigration extends AbstractMigration {
     super(logger, database);
   }
 
-  public migrate(): Promise<void> {
-    return this.database.getConnection().then((connection:any) => {
-      if (!connection){ //mock
-        this.logger.warning('no database connection, skipping migration');
-        return;
-      }
-      this.logger.debug('syncing all schemas');
-      return connection.syncSchema(true);
-    });
+  public async migrate(): Promise<void> {
 
+   const connection = await this.database.getConnection();
+
+   if (!connection){ //mock
+     this.logger.warning('no database connection, skipping migration');
+     return;
+   }
+
+   return connection.syncSchema(true);
   }
   
   public rollback():Promise<void> {
