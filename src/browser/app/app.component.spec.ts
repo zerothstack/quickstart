@@ -4,6 +4,7 @@ import { UserMockStore } from '../../common/stores/user.mock.store';
 import { ConsoleLogger, Logger } from '@ubiquits/core/common';
 import { TestBed } from '@angular/core/testing';
 import { ComponentFixture } from '@angular/core/testing/component_fixture';
+import { Injector } from '@angular/core';
 
 describe('App', () => {
 
@@ -12,7 +13,9 @@ describe('App', () => {
   beforeEach(() => {
 
     context = TestBed.configureTestingModule({
+      declarations: [ AppComponent ],
       providers: [
+        Injector,
         UserMockStore,
         {provide:UserStore, useClass: UserMockStore},
         {provide: Logger, useClass: ConsoleLogger},
