@@ -1,7 +1,7 @@
 import { AppComponent } from './app.component';
 import { UserStore } from '../../common/stores/user.store';
 import { UserMockStore } from '../../common/stores/user.mock.store';
-import { ConsoleLogger, Logger } from '@ubiquits/core/common';
+import { ConsoleLogger, Logger } from '@zerothstack/core/common';
 import { TestBed } from '@angular/core/testing';
 import { ComponentFixture } from '@angular/core/testing/component_fixture';
 import { Injector } from '@angular/core';

@@ -3,7 +3,7 @@ version: '2'
 services:
   database:
     extends:
-      file: ./node_modules/@ubiquits/core/docker/common-services.yml
+      file: ./node_modules/@zerothstack/core/docker/common-services.yml
       service: database
     ports:
       - "${DB_PORT}:${DB_PORT}"

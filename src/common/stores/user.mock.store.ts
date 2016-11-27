@@ -1,6 +1,6 @@
 import { UserStore } from '../../common/stores/user.store';
 import { User } from '../models/user.model';
-import { identifier, MockStore } from '@ubiquits/core/common';
+import { identifier, MockStore } from '@zerothstack/core/common';
 import { Injector, Injectable } from '@angular/core';
 
 @Injectable()

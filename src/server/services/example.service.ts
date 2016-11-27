@@ -1,4 +1,4 @@
-import { Logger, Service, AbstractService } from '@ubiquits/core/common';
+import { Logger, Service, AbstractService } from '@zerothstack/core/common';
 import { Injectable } from '@angular/core';
 
 @Service()
