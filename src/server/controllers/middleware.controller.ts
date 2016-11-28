@@ -14,7 +14,7 @@ import {
 } from '@zerothstack/core/server';
 import { Logger } from '@zerothstack/core/common';
 
-function forwardHeader(headerName: string):IsolatedMiddlewareFactory {
+function forwardHeader(headerName: string): IsolatedMiddlewareFactory {
   //use a named function here so the call stack can easily be debugged to show the called middleware
   return () => function forwardHeader(request: Request, response: Response): Response {
     response.header(headerName, request.headers().get(headerName.toLowerCase()));

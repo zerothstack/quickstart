@@ -15,9 +15,11 @@ export class AppComponent {
   public requestData: any  = null;
   public responseData: any = null;
 
-  constructor(protected userStore: UserStore, protected userMockStore: UserMockStore, protected logger: Logger) {
-
-  }
+  constructor(
+    protected userStore: UserStore,
+    protected userMockStore: UserMockStore,
+    protected logger: Logger
+  ) {}
 
   private resetData(): void {
     this.requestData  = null;
