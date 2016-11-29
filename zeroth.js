@@ -1,6 +1,6 @@
-let {UbiquitsProject} = require('@ubiquits/toolchain');
+let {ZerothProject} = require('@zerothstack/toolchain');
 
-const project = new UbiquitsProject(__dirname);
+const project = new ZerothProject(__dirname);
 
 project.registerCommand((cli, projectInstance) => {
 

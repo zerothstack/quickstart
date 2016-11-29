@@ -1,5 +1,5 @@
-import { AbstractMigration, Database, Migration } from '@ubiquits/core/server';
-import { Logger } from '@ubiquits/core/common';
+import { AbstractMigration, Database, Migration } from '@zerothstack/core/server';
+import { Logger } from '@zerothstack/core/common';
 
 /**
  * Note!

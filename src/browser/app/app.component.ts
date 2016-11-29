@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import '../public/css/styles.css';
 import { UserStore } from '../../common/stores/user.store';
 import { User } from '../../common/models/user.model';
-import { Collection, Logger } from '@ubiquits/core/common';
+import { Collection, Logger } from '@zerothstack/core/common';
 import { UserMockStore } from '../../common/stores/user.mock.store';
 
 @Component({
@@ -15,9 +15,11 @@ export class AppComponent {
   public requestData: any  = null;
   public responseData: any = null;
 
-  constructor(protected userStore: UserStore, protected userMockStore: UserMockStore, protected logger: Logger) {
-
-  }
+  constructor(
+    protected userStore: UserStore,
+    protected userMockStore: UserMockStore,
+    protected logger: Logger
+  ) {}
 
   private resetData(): void {
     this.requestData  = null;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ResourceController, Controller } from '@ubiquits/core/server';
-import { Logger } from '@ubiquits/core/common';
+import { ResourceController, Controller, ControllerMetadata } from '@zerothstack/core/server';
+import { Logger } from '@zerothstack/core/common';
 import { User } from '../../common/models/user.model';
 import { UserStore } from '../../common/stores/user.store';
 
@@ -13,7 +13,7 @@ export class UserController extends ResourceController<User> {
   constructor(logger: Logger, userStore: UserStore) {
     super(logger, userStore);
 
-    logger.info(`route base is ${this.getMetadata().routeBase}`);
+    logger.info(`route base is ${(this.getMetadata() as ControllerMetadata).routeBase}`);
 
   }
 

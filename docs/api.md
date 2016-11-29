@@ -9,5 +9,5 @@ layout: api-container.hbs
 ## Error
 Typedoc output not found. Have you run the generator after building the documentation?
 ```bash
-$ u doc:build && u doc:api
+$ z doc:build && z doc:api
 ```

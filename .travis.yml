@@ -18,7 +18,8 @@ branches:
   except:
   - "/^v[0-9\\.]+/"
 before_install:
-- openssl aes-256-cbc -K $encrypted_92b08e8fae7c_key -iv $encrypted_92b08e8fae7c_iv -in .travis/deployment_key.pem.enc -out .travis/deployment_key.pem -d
+- openssl aes-256-cbc -K $encrypted_a0f0ce1c6211_key -iv $encrypted_a0f0ce1c6211_iv
+  -in .travis/deployment.key.pem.enc -out .travis/deployment.key.pem -d
 - npm install -g pr-bumper
 - pr-bumper check
 - cp .env.example .env
@@ -34,24 +35,22 @@ script:
 after_success:
 - npm run coveralls
 before_deploy:
-- eval "$(ssh-agent -s)" #start the ssh agent
-- chmod 600 .travis/deployment_key.pem
-- ssh-add .travis/deployment_key.pem
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/deployment.key.pem
+- ssh-add .travis/deployment.key.pem
 - pr-bumper bump
-- git fetch --tags # make sure travis ci has all remote tags for changelog
+- git fetch --tags
 - npm run preparepublish
 env:
   global:
-  # pr-bumper-GITHUB_TOKEN-ubiquits/ubiquits
-  - secure: WeZNXT3vUR5B0eoYKnaMVV0ORHATzNkAV9+ZESCOumXHZlbBH/9lLNsTSFh2wPxWwZZXtYRo5knEV6o9sj1vQqWLua2EJN6Fxt6axEjm2Q0zhhhRsyH2OlBKF86cvdwUq97xmVJ1x2jUZkfSTXNjf9CIBmnjTLF/+PoytLAanD4Sz4loKaUKHzxpZHhQ28RmwdivmOx1sIMDWdfHw1UvFduSrSPELqg7ZaB8a0CX+jJ8WNjm4i1uqEWCS2G/0ezPVrYsFbxZ7eTl3zQ+ebIMP7vnE1qGzmS5ArFF9LaRMpIQgkMjY1IrMsuK1P/vYM68glqUnvn76FmobEMJ6ivXWDLiveekM8IkFCMs7vhnWv70k0bqlZG/1L1VJdj/a4dKqPhEsjv/78TzLLzvTj5h3da4Oo4dUlCdOtGRGR+GGKXUXTJS6n63h2d/C+cU31cDQC4yBaOF6dvJ/ICu/DnpHDGROjXhEBzfRBrqM+zCrJc4naJrAFIr7RsTBtnu6TJVoZY3h8y1HWIRT3fusP8Hzfb7wH2VbUZfN3Rxb2uK8R8ZCF4i7RxF+FTqBQAvbY909uLKg5Uf7EXhQxnlzJ/QTeH5wyJEVeh7ObpIsr9rRhzzYh1pZyHBhCUHb5R+aP2XqqsiCuM1JyB2zkfE2ws6OrlWjwm1O8YPSyS/Q/9pxcI=
-  # RO_GH_TOKEN
-  - secure: Fweuy/B9OzsZojhhEZXpeVdhszpymSm3zJ+8ki80ym4UevU4jq2E+XiNSlj8eQZ+4NjUGQSA6IqbtHDq5x1cEknB1nWKhX5khXiG3IsfCCWOBBf9/2n30u1/wwXx3MjihHXSER0e1dAS+neAcTipSrMjdGalOwX4DbUxG0ZAZFD6DEjiSS2nV5W97sRW3MG2Q5mz4OcsI7DM9FbICp3DlF+0BQbWs8A3H5r1lmmLSK/bz+ZgVwm8yCc0lL7ToqYavLUp4Kg0jNI7w9yz/Fv91N+hRNMJEaAAtOP4AFzWliAs+MmQ3d/Pv8E6mnfUmrUYkrXMJauohpSlpsK4GyMZt7ZDGhY59y/cd2JM+bEVCbKiElqr6aC7UwEiH62+T8MCkftjsspqUV+1wmdP9sNKlGWngCNVgrtn8bXpYwOGLmPqPp0RvlIzUF4dBYj0LybjSQPi+lACehoBZ3M4EGfuItXlAtSUKqQHSRXpVccjujuZ+4tz5I10Heo87cZHPNN/UP5kVWSITb45KJAApl7gsNUHCIIc5JGCId3S3QDeM18ow4/8mIG+8Mbjf6OshDm/R9VCqbAaIjCg6mDzat/V+pu52tjqNbMHwbveHnW/LduSBWSQzFG+8xJgMkjzyTyuxwoe7fFbrNtpZ7wPYzAEW/X781n3zF5XcqXNnwLvjHw=
+  - secure: BaAeHe1z8uiUktmeRBBw0eXOzlWPTPe1QnmRdJAhRh5kvHD9ioQ3cpX3zcS/ozE6y4su2CPezuJBX+Zeyp3M+aVCzffU7N9X+1mVuJywp6V8B4hfder3hTsqRqTl8BJztonghToNwFLfeSGmlvtQ1evGHIWO+2jUjN/IgFv2m9LxwnQIoT0UAx11+wjsyGfeXVpnc31BVhQGo3dC92KHXgi74uAZqVguT1Psrl+ujJUwRW/mQaNZ7KVn4P22jU9JRUlxcBgOJ+vdAfoyT6nli+ukQ2m3hk0mFspdHk7QWDf0/B9Tmq83zpkYOQCDz6cvs/0xdbExlG0KMt/7lUi1uQHoFmLvdP8/+LLTpW7etrwIbMJ2xpwgzP62oo7Vitt3zf4U1Ud9PYdbIZyhyPhkLygKXiilmaHoHlkTW6ZGT4sMKJYdtCEAoXTvE6B/UxGzPIEwPL0q/Fq6fCbhiTma4foPvNkBlEHFUolEuPIg+UIl8V210JEybUR9+cX807NXj88GLOuMLB5Jm3sLEs5hZM1o/O7wFg2Q3QpOlkXtoOWTpmMuNr3g5+SHKIpgAMvjij1V5S6wxpPCB1NQXQEitJo331cln6QSAUPyJB2iqvP6v+JRC7A3kJOWJblrqL1IookgYJi3x3xDugOBh+bD+f09pv22yBALZdo7udIw9pc=
+  - secure: RoVqMf5eICrZVTOMyV8IRWCMTb8aydXTmRqq9zyrDi+t3P4FbNGlozZQg3CRohMhncmyeWoe6gusPimAy0PColobgU8Ty3H8D4DI6zqPGYqA1iMJUtjrc7o4WTDwbOUO5erc2BXJscWGGoruKmI/tDM5MibP8X2RTzj61Ag8wNvaJrWd589VQgcdqhaGjbmaclrE8e+jipJj9H0hNYUlbe6nTVuYupYludh1YCqyqeuqKwUwgJT8v0OiOCaUqgLlO0WBkEoJbqD3ViUYGx7hVy7GSC5jfAQIDI8uSqppB279T1tRkZmbnY85N0fCKgZ4E60vuMg8oC4+8Bq8k1atuYowZHMG9fLM2cozzUNpVuCSulICAONXqO4Nmfl+ClfQDOfQV2s39bgrjVbJYMjrB7ZxMVXzFXzggSozsz34LNs+Ehdm4dydigh9C474XzW/fSkrFpWQWk5bPx6wiyAh/9LTO8v+oH3Cw0wojmiDWu7+OsmN38sGVu9fCrh7y6rGMjSrIN+VYWnaJjWxrsZ3mZbkPBPn16QNxWOnGG/AuX5oXJkyz9kjrDtoSv50syDZOg4oV/gihgHuH0RkXc0/tuYzogNjV5B7UCJJO7gLXGVhhhrMTAJD/IWSA/iv4S4Y5eoNqobah7KeH/4Ocsmec85Gj7/570kSwm//u6qIhi0=
 deploy:
   provider: npm
-  email: zak@ubiquits.com
+  email: zak@zeroth.io
   skip_cleanup: true
   api_key:
-    secure: NTQtLuxaOqwgfTRBdki8KrQOWfTgoWt2VV+wxyykfk3TD6SCVVnEpBhcwqoIQR8CHyRANC9G1pxV1tRvZKfew5aPXatXkamWFSwnbFf878wi9kndqIKIYTKY+QwqFHTAoPg6T354jv0sOOd4018DCnA7gfoOr45P8VDrSN/77Vm6OasI7bMIoJGToHbt+MD+QGD1Q7EDDR6bHYkemY9XvUwyGYSaYXLmybpTwzWe1oW1xJ7PjQuE4KspGqN64rIK6QPj0H7pmx9F2mrUlNwakfQaVThSF2c8toSNsRcXtGW4AsE0eiKRcyQprEwojggUoJFPSR/iOLlFrWx4h2UvYjK2vyjDWXOnVRkMbKAj+ifXhpmiKm8tfWGKb2fGLKDAwthD2xVjkWMAQYb4I26fKQVp58q5gOS/AzBUERpBFzRzL7GhSZ1N6fxkjskKI6FNJs4J8+Zm6kqeCsSwYMD1NKYGk23FTbnUM80Cbg3VLCfr/2nXm6WT5ZYfNhC1HaGBRDrYIuHTWF0iXx0POsdBm43ZJQEE4xoP2zMMdiSh+FxFf3CNs4lGf2fm9g8mXO3oMTI5E7d07wJKCI3Ssqcp2DgfyUa6iF3ygwBgBFaT0OneUg1tFKsMjisU+g7uXq0mZTyBWTO0BMfz5nTPrtztFii2W/uxfSOdrIm/mJi6AqQ=
+    secure: LDZw/M1AX3F+q5XEi/vTip0kL6/ixyWbu3btpT5uf6zVAT6iz3nNFYCHbaPCafVxKf2scpVj+Ozoe+z5qi/ugMABnHckCVBngWUSPQkH+c/37OJJDD3PMkuXUZHp2e5g4bJNbojVPMBBBtoB0gUi6XU9TdMqE9oRgGqzG7u+JuLrfs1N3KrL3ItS3gEKm6zqlv0oxILQtK3R/uUIIaoSzgrSTimVHVKYh1sHY8hx0HBsoHzf52o97fs26VsYse6QBX1xJWrjRw9MLaMEACZSAnpx+S5ekVzrciF8PmJHuVuKeSIvJLSj2eb2WsESAu60Wk0IwdOC5xpsFS4p/vUaS94KrwW8Mx2OzAOawcmiPx2qaXKg6wIFJdpUl/I8F22kieyN4yod4uvX3bvydGcF5TVTBKk0WdoRtx/d2PGM8R6GJfV+7y5uniW1Jqswsqp+yLT9BqlOeuNE3xm0Qlw2m7SN0PCvbN+NXDL/lm8nSXpLw4gBeVqIdpq3JfBHA+UJhEGn+MuUsrFH/xBtOeItG3cWkke8gL58nhv/CHWm8yeVEZtxW58ntfAvliKKT7AGTw+x26O99mUvq7rHI5OXqHnMkk2kggQlHZTe9JBoSTIDZw8AZ34fII0DHcJGMChQLbePPk+EY1l2z2iIePZYzcQCKX5uiLFshNdxE7ZVv58=
   on:
     branch: master
     tags: false

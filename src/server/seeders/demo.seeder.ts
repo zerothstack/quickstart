@@ -1,11 +1,11 @@
 import { UserStore } from '../../common/stores/user.store';
-import { Logger } from '@ubiquits/core/common';
-import { AbstractSeeder, Seeder } from '@ubiquits/core/server';
+import { Logger } from '@zerothstack/core/common';
+import { AbstractSeeder, Seeder } from '@zerothstack/core/server';
 import { Injectable } from '@angular/core';
 import { User } from '../../common/models/user.model';
 import { UserMockStore } from '../../common/stores/user.mock.store';
 import { UserDatabaseStore } from '../stores/user.db.store';
-import { NotFoundException } from '@ubiquits/core/common';
+import { NotFoundException } from '@zerothstack/core/common';
 
 @Injectable()
 @Seeder()

@@ -9,7 +9,7 @@ import {
   HasOne,
   BelongsTo,
   MaxLength
-} from '@ubiquits/core/common';
+} from '@zerothstack/core/common';
 import { User } from './user.model';
 
 @Model({

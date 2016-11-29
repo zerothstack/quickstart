@@ -1,4 +1,4 @@
-import { AbstractStore } from '@ubiquits/core/common';
+import { AbstractStore } from '@zerothstack/core/common';
 import { User } from '../../common/models/user.model';
 import { Injectable, Injector } from '@angular/core';
 

@@ -1,6 +1,6 @@
 import { UserStore } from '../../common/stores/user.store';
-import { Logger } from '@ubiquits/core/common';
-import { DatabaseStore, Database } from '@ubiquits/core/server';
+import { Logger } from '@zerothstack/core/common';
+import { DatabaseStore, Database } from '@zerothstack/core/server';
 import { Injectable, Injector } from '@angular/core';
 import { User } from '../../common/models/user.model';
 import { UserMockStore } from '../../common/stores/user.mock.store';

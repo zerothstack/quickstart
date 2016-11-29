@@ -5,8 +5,8 @@ import {
   DatabaseMock,
   ProviderDefinition,
   BootstrapResponse
-} from '@ubiquits/core/server';
-import { Logger, ConsoleLogger } from '@ubiquits/core/common';
+} from '@zerothstack/core/server';
+import { Logger, ConsoleLogger } from '@zerothstack/core/common';
 import { UserDatabaseStore } from './stores/user.db.store';
 import { UserStore } from '../common/stores/user.store';
 import { UserMockStore } from '../common/stores/user.mock.store';
