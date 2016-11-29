@@ -1,4 +1,4 @@
-![zeroth](https://rawgithub.com/zeroth/assets/master/fulllogo.svg)
+![zeroth](https://rawgit.com/zerothstack/assets/master/logo/logotype.black.svg)
 
 ## Note
 This repository is the quickstart repository. See http://zeroth.io/guide/quick-start for documentation on how to get started using the Zeroth CLI.
