@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.1.2",
   "description": "Isomorphic Javascript Framework build in TypeScript",
-  "homepage": "https://github.com/zeroth/quickstart#readme",
+  "homepage": "https://github.com/zerothstack/quickstart#readme",
   "main": "index.js",
   "dependencies": {
     "@angular/common": "^2.1.2",
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zeroth/quickstart.git"
+    "url": "git+https://github.com/zerothstack/quickstart.git"
   },
   "keywords": [
     "angular",
