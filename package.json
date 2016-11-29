@@ -2,7 +2,7 @@
   "name": "@zerothstack/quickstart",
   "author": "Zak Henry (https://twitter.com/zak)",
   "license": "MIT",
-  "version": "1.0.1-0",
+  "version": "1.1.0",
   "description": "Isomorphic Javascript Framework build in TypeScript",
   "homepage": "https://github.com/zeroth/quickstart#readme",
   "main": "index.js",
