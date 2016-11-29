@@ -1,0 +1,184 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.parallax-container {
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+header, main, footer {
+    padding-left: 245px;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+
+li.logo {
+    margin-bottom: 150px;
+}
+
+#logo-container img {
+    margin: auto;
+    display: block;
+    width: 70%;
+    height: auto;
+}
+
+a#logo-container {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+}
+
+.heading-anchor {
+    height: 20px;
+    width: 20px;
+    display: block;
+    padding-right: 6px;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-decoration: none;
+    height: 100%;
+    background: transparent;
+    color: #444;
+    vertical-align: middle;
+}
+
+.heading-anchor:hover {
+    color: #444;
+}
+
+h1:hover .heading-anchor span:before,
+h2:hover .heading-anchor span:before,
+h3:hover .heading-anchor span:before,
+h4:hover .heading-anchor span:before,
+h5:hover .heading-anchor span:before,
+h6:hover .heading-anchor span:before {
+    content: "#";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.contents img {
+    max-width: 100%;
+}
+
+.contents ul {
+    margin-left: 2rem;
+}
+
+.contents ul li {
+    list-style-type: circle;
+}
+
+.contents ul li.checkbox {
+    list-style-type: none;
+}
+
+.side-nav a > i {
+    margin-top: 20px;
+    color: #9e9e9e;
+}
+
+.side-nav li:not(.logo) a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 10px !important;
+}
+
+pre {
+    border-left: 3px double #9e9e9e;
+    padding-left: 15px;
+}
+
+*:not(pre) > code {
+    line-height: 1.2em;
+    border-bottom: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    display: inline-block;
+}
+
+.side-nav li.pending a {
+    color: #ccc;
+}
